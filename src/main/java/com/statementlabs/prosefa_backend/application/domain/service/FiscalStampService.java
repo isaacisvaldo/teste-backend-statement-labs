@@ -11,6 +11,8 @@ import com.statementlabs.prosefa_backend.application.port.out.GenerateCodeSequen
 import com.statementlabs.prosefa_backend.infrastructure.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,8 +26,7 @@ public class FiscalStampService implements FiscalStampUseCase {
             FiscalStampRepositoryPort fiscalStampRepositoryPort,
             CompanyRepositoryPort companyRepositoryPort,
             AuditLogService auditLogService,
-            GenerateCodeSequence generateCodeSequence
-    ) {
+            GenerateCodeSequence generateCodeSequence) {
         this.companyRepositoryPort = companyRepositoryPort;
         this.fiscalStampRepositoryPort = fiscalStampRepositoryPort;
         this.auditLogService = auditLogService;
@@ -67,5 +68,15 @@ public class FiscalStampService implements FiscalStampUseCase {
         auditLogService.log("FiscalStamp", "VALIDATION_PERFORMED", "user", "Stamp validated: " + code);
 
         return savedStamp;
+    }
+
+    @Override
+    public Optional<FiscalStamp> findByCode(String code) {
+        return fiscalStampRepositoryPort.findByCode(code);
+    }
+
+    @Override
+    public List<FiscalStamp> findByCompanyIdAndState(UUID companyId, FiscalStampState state) {
+        return fiscalStampRepositoryPort.findByCompanyIdAndState(companyId, state);
     }
 }

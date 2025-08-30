@@ -3,6 +3,10 @@ package com.statementlabs.prosefa_backend.application.domain.service;
 import com.statementlabs.prosefa_backend.application.domain.model.AuditLog;
 import com.statementlabs.prosefa_backend.application.port.in.usecase.AuditLogUseCase;
 import com.statementlabs.prosefa_backend.application.port.out.AuditLogRepositoryPort;
+import com.statementlabs.prosefa_backend.infrastructure.dto.AuditLogFilterDTO;
+
+
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -26,5 +30,10 @@ public class AuditLogService implements AuditLogUseCase {
         auditLog.setDetails(details);
         auditLog.setDateTime(LocalDateTime.now());
         auditLogRepositoryPort.save(auditLog);
+    }
+
+      @Override
+    public Page<AuditLog> findAllWithFilter(AuditLogFilterDTO filter) {
+        return auditLogRepositoryPort.findAllWithFilters(filter);
     }
 }
