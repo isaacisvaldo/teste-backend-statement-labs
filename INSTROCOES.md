@@ -141,7 +141,7 @@ GET http://localhost:8080/api/audit-logs?page=0&size=5&user=admin&entity=FiscalS
         "action": "VALIDATION_PERFORMED",
         "audit_user": "admin",
         "dateTime": "2025-08-30T10:15:00",
-        "details": "Stamp validated: PROSEFA-000123"
+        "details": "Stamp validated: PROSEFA-2025-000002"
       }
     ],
     "totalPages": 10,
