@@ -10,7 +10,6 @@ import com.statementlabs.prosefa_backend.application.port.out.FiscalStampReposit
 import com.statementlabs.prosefa_backend.application.port.out.GenerateCodeSequence;
 import com.statementlabs.prosefa_backend.infrastructure.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 

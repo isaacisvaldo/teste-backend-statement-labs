@@ -6,13 +6,13 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "counters")
 public class Counter {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id; 
+    private String id;  
+
     private long seq;
 
-    // ----- Getters and Setters -----
-
+    // Getters e Setters
     public String getId() {
         return id;
     }
@@ -25,7 +25,6 @@ public class Counter {
     public void setSeq(long seq) {
         this.seq = seq;
     }
-
-   
 }
+
     
