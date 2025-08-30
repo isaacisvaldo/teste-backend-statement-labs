@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "counters")
 public class Counter {
-
     @Id
     private String id;  
 
